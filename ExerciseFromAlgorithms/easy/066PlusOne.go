@@ -1,35 +1,50 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 	"strconv"
+	"strings"
 )
 
 func plusOne(digits []int) []int {
-	for _, v := range digits[len(digits)-1:] {
-		v++
-		digits = append(digits[:len(digits)-1], v)
-		if v > 9 {
-			return digits
+	last := digits[len(digits)-1:]
+	num := last[0] + 1
+	digits = digits[:len(digits)-1]
+	digits = append(digits, num)
+
+	if last[0] > 9 {
+		first := digits[:len(digits)-1]
+		numberStr := strconv.Itoa(last[0])
+		sp := strings.Split(numberStr, "")
+		for _, v := range sp {
+			s, _ := strconv.Atoi(v)
+			first = append(first, s)
 		}
+		return first
 	}
 	return digits
 }
 
+// TODO
 func main() {
-	input := bufio.NewScanner(os.Stdin)
-	list := []int{}
-	for input.Scan() {
-		inputStr := input.Text()
-		number, _ := strconv.Atoi(inputStr)
-		if inputStr != "" {
-			list = append(list, number)
-		} else {
-			break
-		}
-	}
-	r := plusOne(list)
-	fmt.Println(r)
+	digits := []int{9, 9}
+
+	// last := digits[len(digits)-1:]
+	// num := last[0] + 1
+	// digits = digits[:len(digits)-1]
+	// digits = append(digits, num)
+
+	// if last[0] > 9 {
+	// 	first := digits[:len(digits)-1]
+	// 	numberStr := strconv.Itoa(last[0])
+	// 	sp := strings.Split(numberStr, "")
+	// 	for _, v := range sp {
+	// 		s, _ := strconv.Atoi(v)
+	// 		first = append(first, s)
+	// 	}
+	// 	fmt.Println(first)
+	// 	return
+	// }
+	// fmt.Println(digits)
+
 }

@@ -1,20 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"sort"
+	"strings"
+)
 
+// ref :https://www.geeksforgeeks.org/how-to-sort-a-slice-of-strings-in-golang/
 func checkString(s string) bool {
 	// เรียงตาม digit
 	// = true , < false
-	return false
+	sp := strings.Split(s, "")
+	check := sort.StringsAreSorted(sp)
+	return check
 }
 
 func main() {
-	s := ""
-	fmt.Scan(&s)
-
-	for _, v := range s {
-		fmt.Println(v)
-	}
+	s := "abab"
+	res := checkString(s)
+	fmt.Println(res)
 
 	// a := 1
 	// b := 2

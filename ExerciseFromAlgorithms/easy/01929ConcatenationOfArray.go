@@ -12,6 +12,7 @@ func getConcatenation(nums []int) []int {
 	return nums
 }
 
+// TODO
 func main() {
 	input := bufio.NewScanner(os.Stdin)
 	list := []int{}
